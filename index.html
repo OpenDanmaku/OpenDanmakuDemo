@@ -15,7 +15,7 @@
 	maxLoop=0;
 	MainFloor=new Object()
 	UID="";
-	maxLength=80;//默认多于80字符的也显示
+	maxLength=80;//默认多于80字符的也显示,除非给两个参数,或者唯一的参数不是主楼
 	//获取页面ID或回复ID
 	para=document.URL.split("=");
 	if (para.length==2)maxLength=65535;//除非给两个参数,即都为主楼,或一个主楼一个回复
@@ -37,7 +37,7 @@
 		//获取父页面ID
 		Page_ID=data.threads.parent;
 		if(data.threads.parent==0) Page_ID=data.threads.id;
-		//else maxLength=80;//parent不为0,即给予两个参数,一个主楼一个回复
+		else maxLength=65535;//parent不为0,即给予两个参数,一个主楼一个回复
 		//获取父页面JSON,回调getParent
 		var src_parent="http://h.acfun.tv/t/" + Page_ID.toString() + ".json?callback=getParent";
 		var JSONP=document.createElement("script");
