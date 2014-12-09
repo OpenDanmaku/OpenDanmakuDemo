@@ -92,7 +92,8 @@
 	var str="";
 	for (x in Page_JSON){
 		var this_JSON=Page_JSON[x];
-		if((this_JSON.uid==UID) || (this_JSON.content.length>maxLength)) str+=printFloor(this_JSON);
+		if(this_JSON.uid==UID) str+=printFloor(this_JSON);
+		else if(this_JSON.content.length>maxLength) str+=printFloor(this_JSON);
 		}
 	return str;
 	}
