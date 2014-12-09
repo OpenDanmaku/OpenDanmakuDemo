@@ -1,5 +1,4 @@
-<html>
-<head><meta charset='utf-8'></head>
+<html><head><meta charset='utf-8'><title>A岛文豪@OpenDanmaku磁链弹幕</title></head>
 <body>
 <div id="ad" style="background:#FFEFEF; color:#800000" onclick="ShowAD();">磁链弹幕OpenDanmaku项目诚邀志同道合者,详情请点击</div>
 <div id="mainFloor" style="background:#FFD0D0; color:#800000"></div>
@@ -8,7 +7,7 @@
 <script type="text/javascript">
 	//全局变量
 
-	
+	Instruction="想要欣赏某文豪发的全文却感到麻烦重重？<br>想要找到某个人的全部点评却觉大海捞针？<br>再也不会了！<br>只要在页面链接前加<br>　　　　http://opendanmaku.github.io/#<br>即可阅读此饼干的全部回复！<br><br><font color="#789922">&gt;&gt;解析规则更新啦！</font><br><font color="#789922">&gt;&gt;范例：</font><br>PO文去水（PO和超过80字符的回复，适用于PO更换饼干）<br>http://opendanmaku.github.io/#http://h.acfun.tv/t/4705755<br>http://opendanmaku.github.io/#4705755<br><br>只看PO主（只有PO，适用于PO没换饼干）<br>http://opendanmaku.github.io/#http://h.acfun.tv/t/4705755?r=4705755<br><br>只看此楼作者全部评论（适用于查看点评，或者作者某曾用Cookie的发言）<br>http://opendanmaku.github.io/#http://h.acfun.tv/t/4705755?r=5253756<br>http://opendanmaku.github.io/#5253756<br><br><font color="#789922">&gt;&gt;请大家支持、推广、转发OpenDanmaku磁链弹幕项目！</font><br><font color="#789922">&gt;&gt;项目地址&nbsp;https://github.com/opendanmaku/opendanmaku</font><br><font color="#789922">&gt;&gt;欢迎编程爱好者参与项目！感谢大家！(ノﾟ∀ﾟ)ノ</font><br>";
 	Page_JSON=new Array()
 	Page_ID=0;
 	getLoop=0;
@@ -21,6 +20,7 @@
 	paraLength=para.length;
 	if (paraLength==2)maxLength=65535;//除非给两个参数,即都为主楼,或一个主楼一个回复
 	var rid=parseInt(para.pop().replace(/[^0-9]/ig,""));
+	if (rid="") document.getElementById("ad").innerHTML+=Instruction;
 	var src_rid="http://h.acfun.tv/t/" + rid.toString() + ".json?callback=getRid";//	document.write(src_rid);
 	//获取此条JSON,回调getRid
 	var JSONP=document.createElement("script");
