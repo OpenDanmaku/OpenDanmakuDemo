@@ -19,7 +19,7 @@
 	//获取页面ID或回复ID
 	para=document.URL.split("=");
 	paraLength=para.Length;
-	if (para.length==2)maxLength=65535;//除非给两个参数,即都为主楼,或一个主楼一个回复
+	if (paraLength==2)maxLength=65535;//除非给两个参数,即都为主楼,或一个主楼一个回复
 	var rid=parseInt(para.pop().replace(/[^0-9]/ig,""));
 	var src_rid="http://h.acfun.tv/t/" + rid.toString() + ".json?callback=getRid";//	document.write(src_rid);
 	//获取此条JSON,回调getRid
@@ -38,7 +38,7 @@
 		//获取父页面ID
 		Page_ID=data.threads.parent;
 		if(data.threads.parent==0) Page_ID=data.threads.id;
-		else if (para.length==1) maxLength=65535;//参数唯一且parent不为0,即唯一的参数不是主楼
+		else if (paraLength==1) maxLength=65535;//参数唯一且parent不为0,即唯一的参数不是主楼
 		//获取父页面JSON,回调getParent
 		var src_parent="http://h.acfun.tv/t/" + Page_ID.toString() + ".json?callback=getParent";
 		var JSONP=document.createElement("script");
