@@ -18,6 +18,7 @@
 	maxLength=80;//默认多于80字符的也显示,除非给两个参数,或者唯一的参数不是主楼
 	//获取页面ID或回复ID
 	para=document.URL.split("=");
+	paraLength=para.Length;
 	if (para.length==2)maxLength=65535;//除非给两个参数,即都为主楼,或一个主楼一个回复
 	var rid=parseInt(para.pop().replace(/[^0-9]/ig,""));
 	var src_rid="http://h.acfun.tv/t/" + rid.toString() + ".json?callback=getRid";//	document.write(src_rid);
