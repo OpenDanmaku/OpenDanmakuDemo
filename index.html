@@ -1,3 +1,4 @@
+
 <html><head><meta charset='utf-8'><title>A岛文豪@OpenDanmaku磁链弹幕</title></head>
 <body>
 <div id="ad" style="background:#FFEFEF; color:#800000" onclick="ShowAD();"> 磁链弹幕OpenDanmaku项目诚邀志同道合者,<b>详情请点击</b> </div>
@@ -10,6 +11,7 @@
 	Page_ID=0;
 	getLoop=0;
 	maxLoop=0;
+	x=0;
 	MainFloor=new Object()
 	UID="";
 	maxLength=80;//默认多于80字符的也显示,除非给两个参数,或者唯一的参数不是主楼
@@ -47,7 +49,7 @@
 		Instruction+="http://opendanmaku.github.io/#5253756<br><br>";
 		Instruction+="<font color=\"#789922\">&gt;&gt;请大家支持、推广、转发OpenDanmaku磁链弹幕项目！</font><br>";
 		Instruction+="<font color=\"#789922\">&gt;&gt;项目地址&nbsp;https://github.com/opendanmaku/opendanmaku</font><br>";
-		Instruction+="<font color=\"#789922\">&gt;&gt;欢迎编程爱好者参与项目！感谢大家！(ノ???)ノ</font><br>";	
+		Instruction+="<font color=\"#789922\">&gt;&gt;欢迎编程爱好者参与项目！感谢大家！(ノﾟ∀ﾟ)ノ</font><br>";	
 
 		document.getElementById("ad").innerHTML+=Instruction;
 	}
@@ -135,8 +137,10 @@
 	}
 	function printFloor(data){
 		var str="";
-		str+="<b>"+data.uid.toString()+" "+data.name+" "+data.email+" "+data.title+" No."+data.id+"</b><br/>"+data.content+"<br>"
-		if(data.image!="")str+="http://static.acfun.mm111.net/h/"+data.image+"<br>";
+		var url="http://static.acfun.mm111.net/h/"
+		str+="<b>"+emptyTitle(data.title)+" "+emptyName(data.name)+" "+data.email+" </b>"+dateTotime(data.createdAt)+" <b>ID:"+data.uid.toString()
+		str+=" "+" </b>No.<b>"+data.id+"</b> Page "+(Math.floor(x/20)+1)+"<br/>"+data.content+"<br>"
+		if(data.image!="") str+="<img style=\"width: 250px\" src=\"" + url+data.image + "\" onclick=\"resize(this.id);\" id=\"" + x + "\" /><br>";
 		return str;
 	}
 	function printReply(){
@@ -148,7 +152,22 @@
 		}
 	return str;
 	}
+	function dateTotime(date_time)
+{
 
+		var timestr = new Date(parseInt(date_time));
+
+		return timestr.toLocaleString().replace(/\//g, "-");
+
+	}
+	function emptyTitle(data){return (data==""?"无标题":data);}
+	function emptyName (data){return (data==""?"无名氏":data);}
+	function resize(data){
+		var this_width=document.getElementById(data.toString()).style.width;
+		//alert(typeof(this_width));alert(this_width);
+		if (this_width=="250px") document.getElementById(data.toString()).style.width="100%";
+		else document.getElementById(data.toString()).style.width="250px";
+	}
 </script>
 <script type="text/javascript" id="tc_3c6b1ff9a8">
 var _tcq = _tcq || []; _tcq.push(['flag', '3c6b1ff9a8', '000000', 'ffffff', 'ffffff', '1', '1', '0']); 
