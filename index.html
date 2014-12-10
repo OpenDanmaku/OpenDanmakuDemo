@@ -1,8 +1,7 @@
 <html><head><meta charset='utf-8'><title>A岛文豪@OpenDanmaku磁链弹幕</title></head>
 <body>
-<div id="ad" style="background:#FFEFEF; color:#800000" onclick="ShowAD();">磁链弹幕OpenDanmaku项目诚邀志同道合者,详情请点击</div>
-<div id="mainFloor" style="background:#FFD0D0; color:#800000"></div>
-<br />
+<div id="ad" style="background:#FFEFEF; color:#800000" onclick="ShowAD();"> 磁链弹幕OpenDanmaku项目诚邀志同道合者,详情请点击 </div>
+<div id="mainFloor" style="background:#FFD0D0; color:#800000"></div><br />
 <div id="replyFloor" style="background:#FFEFEF; color:#800000"></div>
 <script type="text/javascript">
 //正文
@@ -32,11 +31,10 @@
 		document.body.appendChild(JSONP);
 	}
 //正文结束
-</script>
-<script type="text/javascript">
+
 	function ShowInstruction(){
 		//功能提示
-		Instruction="<br><br>想要欣赏某文豪发的全文却感到麻烦重重？<br>想要找到某个人的全部点评却觉大海捞针？<br>再也不会了！<br>";
+		var Instruction="<br><br>想要欣赏某文豪发的全文却感到麻烦重重？<br>想要找到某个人的全部点评却觉大海捞针？<br>再也不会了！<br>";
 		Instruction+="只要在页面链接前加<br>　　　　http://opendanmaku.github.io/#<br>即可阅读此饼干的全部回复！<br><br>";
 		Instruction+="<font color=\"#789922\">&gt;&gt;解析规则更新啦！</font><br><font color=\"#789922\">&gt;&gt;范例：</font>";
 		Instruction+="<br>PO文去水（PO和超过80字符的回复，适用于PO更换饼干）<br>";
@@ -51,12 +49,13 @@
 		Instruction+="<font color=\"#789922\">&gt;&gt;项目地址&nbsp;https://github.com/opendanmaku/opendanmaku</font><br>";
 		Instruction+="<font color=\"#789922\">&gt;&gt;欢迎编程爱好者参与项目！感谢大家！(ノ???)ノ</font><br>";	
 
-		document.getElementById("ad").innerHTML+=MyAD;
+		document.getElementById("ad").innerHTML+=Instruction;
 	}
 
 	function ShowAD(){
 		//项目广告
-		MyAD="<br>用途<br>　　　　提供一个按磁力链接索引的匿名弹幕服务器,以及相应的API,平台为新浪云<br>";
+		var MyAD=" 磁链弹幕OpenDanmaku项目诚邀志同道合者 <br>";
+		MyAD+="用途<br>　　　　提供一个按磁力链接索引的匿名弹幕服务器,以及相应的API,平台为新浪云<br>";
 		MyAD+="　　　　只要你提供magnet链接(中的btih编码),你可以借此在任何视频中分享弹幕<br>　　　　没错,任何视频,能干什么你懂的<br>";
 		MyAD+="功能<br>　　　　获取用户Cookie:并且有积分和操作硬直设定<br>";
 		MyAD+="　　　　新建/获取视频信息:最近一周的最热视频,最近一周投稿(时间倒序),某投稿信息<br>";
@@ -78,11 +77,11 @@
 		MyAD+="　　　　专门的服务器提供分布式数据库储存,互相保持最终一致性,平时主要访问这个渠道<br>";
 		MyAD+="　　　　如果服务器不能访问,每个客户端也可以牺牲效率,直接互相同步弹幕<br>";
 		MyAD+="　　　　客户端监听每个anonymous&nbsp;user发布弹幕时的广播,互相传递本地弹幕cache,并用guid来去除重复<br>";
-		MyAD+="　　　　............<br>如果有哪位大神能来合作实现,不胜感激,请务必联系我schezuk@163.com";
+		MyAD+="　　　　<b>如果有哪位大神能来合作实现,不胜感激,请务必联系我schezuk@163.com</b>";
 
-		document.getElementById("ad").innerHTML+=MyAD;
+		document.getElementById("ad").innerHTML=MyAD;
 	}
-	
+
 	function getRid(data){
 		//获取显示的uid
 		UID=data.threads.uid;
