@@ -148,8 +148,11 @@
 	for (x in Page_JSON){
 		var this_JSON=Page_JSON[x];
 		if(this_JSON.uid==UID) str+=printFloor(this_JSON);
-		else { if(this_JSON.content.length>maxLength) str+=printFloor(this_JSON);}
+		else {
+			if(this_JSON.content.length>maxLength) str+=printFloor(this_JSON);
+			else if (maxLength ==65535 && typeof(this_JSON.image)!="undefined" && this_JSON.image!="") str+=printFloor(this_JSON);
 		}
+	}
 	return str;
 	}
 	function dateTotime(date_time)
