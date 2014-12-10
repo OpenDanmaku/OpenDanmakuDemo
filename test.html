@@ -1,3 +1,5 @@
+<script type="text/javascript">
+/*
 <img src="http://imgsrc.baidu.com/forum/pic/item/0950c93d70cf3bc751b57aa1d200baa1cc112a9b.jpg" />
 <img src="http://static.acfun.mm111.net/h/image/2014-8-12/bd9678ee-ba91-4e7e-a241-1c1c0e9bc415.jpg" />
 &lt;img src=&quot;http://static.acfun.mm111.net/h/image/2014-8-12/bd9678ee-ba91-4e7e-a241-1c1c0e9bc415.jpg&quot;&nbsp;/&gt;
@@ -6,3 +8,15 @@
 <br>======================<br>
 
 <iframe width="250" srcdoc="&lt;img width=&quot;250&quot; src=&quot;http://imgsrc.baidu.com/forum/pic/item/0950c93d70cf3bc751b57aa1d200baa1cc112a9b.jpg&quot;&nbsp;/&gt;"></iframe>
+*/
+</script>
+<script type="text/javascript">// <![CDATA[
+function showImg( url ) {
+        var frameid = 'frameimg' + Math.random();
+        window.img = '<img id="img" src=\''+url+'?'+Math.random()+'\' /><script>window.onload = function() { parent.document.getElementById(\''+frameid+'\').height = document.getElementById(\'img\').height+\'px\'; }<'+'/script>';
+        document.write('<iframe id="'+frameid+'" src="javascript:parent.img;" frameBorder="0" scrolling="no" width="100%"></iframe>');
+}
+// ]]></script>
+<script type="text/javascript">// <![CDATA[
+showImg('http://imgsrc.baidu.com/forum/pic/item/0950c93d70cf3bc751b57aa1d200baa1cc112a9b.jpg');
+// ]]></script>
