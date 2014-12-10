@@ -150,7 +150,7 @@
 		if(this_JSON.uid==UID) str+=printFloor(this_JSON);
 		else {
 			if(this_JSON.content.length>maxLength) str+=printFloor(this_JSON);
-			else if (maxLength ==65535 && typeof(this_JSON.image)!="undefined" && this_JSON.image!="") str+=printFloor(this_JSON);
+			else if (maxLength ==80 && typeof(this_JSON.image)!="undefined" && this_JSON.image!="") str+=printFloor(this_JSON);
 		}
 	}
 	return str;
