@@ -19,7 +19,7 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 <form action="http://idanmu.tk/newCookie.php" method="post">
 	<fieldset>
 	<legend>获取Cookie</legend>请输入验证信息：
-	<input type="text" name="vcode" style="width:300;" /><br>
+	<input type="text" name="vcode" style="width:300;" value="请输入等式结果" /><br>
 	<input type="submit" value="提交">
 	<img src="http://idanmu.tk/getVcode.php" />
 	</fieldset>
@@ -29,22 +29,22 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 <form action="http://idanmu.tk/newVideo.php" method="post">
 	<fieldset>
 	<legend>创建视频信息</legend>请输入磁力链接：
-	<input type="text" name="btih" style="width:300;"  value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba&tr.0=http://tracker.ktxp.com:6868/announce&tr.1=udp://tracker.ktxp.com:6868/announce"/><br>
+	<input type="text" name="btih" style="width:300;" value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba" /><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
 <form action="http://idanmu.tk/getVideo.php" method="post">
 	<fieldset>
 	<legend>获取视频列表</legend>请输入磁力链接：
-	<input type="text" name="btih" style="width:300;"  value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba&tr.0=http://tracker.ktxp.com:6868/announce&tr.1=udp://tracker.ktxp.com:6868/announce"/><br>请输入任务类型：
-	<input type="text" name="action" style="width:300;" value="time\/view\/reply\/find"/><br>
+	<input type="text" name="btih" style="width:300;" value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba" /><br>请输入任务类型：
+	<input type="text" name="action" style="width:300;" value="time/view/reply/find"/><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
 <form action="http://idanmu.tk/getVideo.php" method="post">
 	<fieldset>
 	<legend>获取视频信息</legend>请输入磁力链接：
-	<input type="text" name="btih" style="width:300;"  value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba&tr.0=http://tracker.ktxp.com:6868/announce&tr.1=udp://tracker.ktxp.com:6868/announce"/><br>
+	<input type="text" name="btih" style="width:300;" value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba" /><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
@@ -53,14 +53,14 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 <form action="http://idanmu.tk/newLink.php" method="post">
 	<fieldset>
 	<legend>创建链接引用</legend>请输入链接引用：
-	<input type="text" name="linkage" style="width:300;" value="c8000e819cce54f3ea284c9c6604c0e5d71ad2ba,588d1fb8530b6f2452dfd8bd658c184f65e95d2a,1;0,500,3600000"/><br>
+	<input type="text" name="linkage" style="width:300;" value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba,magnet:?xt=urn:btih:588d1fb8530b6f2452dfd8bd658c184f65e95d2a,1;0,500,3600000" /><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
 <form action="http://idanmu.tk/getLink.php" method="post">
 	<fieldset>
 	<legend>获取引用列表</legend>请输入磁力链接：
-	<input type="text" name="btih" style="width:300;"  value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba&tr.0=http://tracker.ktxp.com:6868/announce&tr.1=udp://tracker.ktxp.com:6868/announce"/><br>
+	<input type="text" name="btih" style="width:300;" value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba" /><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
@@ -71,20 +71,19 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 <form action="http://idanmu.tk/newComment.php" method="post">
 	<fieldset>
 	<legend>创建弹幕信息</legend>请输入磁力链接：
-	<input type="text" name="btih" style="width:300;"  value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba&tr.0=http://tracker.ktxp.com:6868/announce&tr.1=udp://tracker.ktxp.com:6868/announce"/><br>请输入弹幕数据：
-	<textarea type="text" name="comment" rows="7" style="width:300px">
-	{"c":"4293.101,16777215,1,25,123456,1418118573,","m":"我凑，一堆马赛克......"}</textarea><br>
+	<input type="text" name="btih" style="width:300;" value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba" /><br>请输入弹幕数据：
+	<textarea type="text" name="comment" rows="7" style="width:300px">{"c":"4293.101,16777215,1,25,123456,1418118573,","m":"我凑，一堆马赛克......"}</textarea><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
 <form action="http://idanmu.tk/getComment.php" method="post">
 	<fieldset>
 	<legend>获取弹幕信息</legend>请输入磁力链接：
-	<input type="text" name="btih" style="width:300;"  value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba&tr.0=http://tracker.ktxp.com:6868/announce&tr.1=udp://tracker.ktxp.com:6868/announce"/><br>请输入任务类型：
-	<input type="text" name="action" style="width:300;" /><br>请输入起始信息：
-	<input type="text" name="start" style="width:300;" /><br>请输入结束信息：
-	<input type="text" name="end" style="width:300;" /><br>请输入弹幕数量：
-	<input type="text" name="count" style="width:300;" /><br>
+	<input type="text" name="btih" style="width:300;" value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba" /><br>请输入任务类型：
+	<input type="text" name="action" style="width:300;" value="cid/time/recent/last/all" /><br>请输入起始信息：
+	<input type="text" name="start" style="width:300;" value="unix时间戳或cid序号(从0开始)" /><br>请输入结束信息：
+	<input type="text" name="end" style="width:300;" value="unix时间戳或cid序号(从0开始)"/><br>请输入弹幕数量：
+	<input type="text" name="count" style="width:300;" value="正整数"/><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
@@ -93,15 +92,15 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 <form action="http://idanmu.tk/newDislike.php" method="post">
 	<fieldset>
 	<legend>创建举报信息</legend>请输入磁力链接：
-	<input type="text" name="btih" style="width:300;"  value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba&tr.0=http://tracker.ktxp.com:6868/announce&tr.1=udp://tracker.ktxp.com:6868/announce"/><br>请输入弹幕序号：
-	<input type="text" name="cid" style="width:300;" /><br>
+	<input type="text" name="btih" style="width:300;" value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba" /><br>请输入弹幕序号：
+	<input type="text" name="cid" style="width:300;" value="cid序号(从0开始)" /><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
 <form action="http://idanmu.tk/getDislike.php" method="post">
 	<fieldset>
 	<legend>获取举报信息</legend>请输入磁力链接：
-	<input type="text" name="btih" style="width:300;"  value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba&tr.0=http://tracker.ktxp.com:6868/announce&tr.1=udp://tracker.ktxp.com:6868/announce"/><br>
+	<input type="text" name="btih" style="width:300;" value="magnet:?xt=urn:btih:c8000e819cce54f3ea284c9c6604c0e5d71ad2ba" /><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
