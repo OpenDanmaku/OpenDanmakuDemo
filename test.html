@@ -16,7 +16,7 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 <table><tr><td>
 <table>
 <tr><td>
-<form action="http://idanmu.tk/newCookie.php" method="get">
+<form action="http://idanmu.tk/newCookie.php" method="post">
 	<fieldset>
 	<legend>获取Cookie</legend>请输入验证信息：
 	<input type="text" name="vcode" style="width:300;" /><br>
@@ -26,14 +26,14 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 </form>
 </td></tr>
 <tr><td>
-<form action="http://idanmu.tk/newVideo.php" method="get">
+<form action="http://idanmu.tk/newVideo.php" method="post">
 	<fieldset>
 	<legend>创建视频信息</legend>请输入磁力链接：
 	<input type="text" name="btih" style="width:300;" /><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
-<form action="http://idanmu.tk/getVideo.php" method="get">
+<form action="http://idanmu.tk/getVideo.php" method="post">
 	<fieldset>
 	<legend>获取视频列表</legend>请输入磁力链接：
 	<input type="text" name="btih" style="width:300;" /><br>请输入任务类型：
@@ -41,7 +41,7 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
-<form action="http://idanmu.tk/getVideo.php" method="get">
+<form action="http://idanmu.tk/getVideo.php" method="post">
 	<fieldset>
 	<legend>获取视频信息</legend>请输入磁力链接：
 	<input type="text" name="btih" style="width:300;" /><br>
@@ -50,14 +50,14 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 </form>
 </td></tr>
 <tr><td>
-<form action="http://idanmu.tk/newLink.php" method="get">
+<form action="http://idanmu.tk/newLink.php" method="post">
 	<fieldset>
 	<legend>创建链接引用</legend>请输入链接引用：
 	<input type="text" name="linkage" style="width:300;" /><br>
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
-<form action="http://idanmu.tk/getLink.php" method="get">
+<form action="http://idanmu.tk/getLink.php" method="post">
 	<fieldset>
 	<legend>获取引用列表</legend>请输入磁力链接：
 	<input type="text" name="btih" style="width:300;" /><br>
@@ -68,7 +68,7 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 </table></td>
 <td><table>
 <tr><td>
-<form action="http://idanmu.tk/newComment.php" method="get">
+<form action="http://idanmu.tk/newComment.php" method="post">
 	<fieldset>
 	<legend>创建弹幕信息</legend>请输入磁力链接：
 	<input type="text" name="btih" style="width:300;" /><br>请输入弹幕数据：
@@ -76,7 +76,7 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
-<form action="http://idanmu.tk/getComment.php" method="get">
+<form action="http://idanmu.tk/getComment.php" method="post">
 	<fieldset>
 	<legend>获取弹幕信息</legend>请输入磁力链接：
 	<input type="text" name="btih" style="width:300;" /><br>请输入任务类型：
@@ -89,7 +89,7 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 </form>
 </td></tr>
 <tr><td>
-<form action="http://idanmu.tk/newDislike.php" method="get">
+<form action="http://idanmu.tk/newDislike.php" method="post">
 	<fieldset>
 	<legend>创建举报信息</legend>请输入磁力链接：
 	<input type="text" name="btih" style="width:300;" /><br>请输入弹幕序号：
@@ -97,7 +97,7 @@ https://github.com/OpenDanmaku/OpenDanmaku/blob/master/server/API.md</a><br></di
 	<input type="submit" value="提交">
 	</fieldset>
 </form>
-<form action="http://idanmu.tk/getDislike.php" method="get">
+<form action="http://idanmu.tk/getDislike.php" method="post">
 	<fieldset>
 	<legend>获取举报信息</legend>请输入磁力链接：
 	<input type="text" name="btih" style="width:300;" /><br>
@@ -160,4 +160,3 @@ function ShowAD(){
 </script>
 </body>
 </html>
-
