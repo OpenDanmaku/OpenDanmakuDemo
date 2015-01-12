@@ -14,11 +14,12 @@
 	<div id="load-player"></div>
 <hr />
 
-<form id="myform" action="http://idanmu.tk/newComment.php">
+<form id="myform" action="http://idanmu.tk/newComment.php" target="id_iframe">
 	<input type="hidden" id="btih" name="btih" />
 	<input type="text" id="comment" name="comment" size="60" value="请输入弹幕,点击按钮提交,刷新页面可见新增弹幕" />
 	<input type="button" onclick="oncommentpost()" value="提交弹幕">
 </form>
+<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe><!--	http://www.jb51.net/web/138365.html	-->
 </td><td>
 
 	<button type="button" onclick="onbtnclick()">点击播放默认测试视频</button>
