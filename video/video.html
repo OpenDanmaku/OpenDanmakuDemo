@@ -16,7 +16,7 @@
 
 <form id="myform" action="http://idanmu.tk/newComment.php" target="id_iframe">
 	<input type="hidden" id="btih" name="btih" />
-	<input type="text" id="comment" name="comment" size="60" value="请输入弹幕,点击按钮提交,刷新页面可见新增弹幕" />
+	<input type="text" onfocus="cleartext()" id="comment" name="comment" size="60" value="请输入弹幕,点击按钮提交,刷新页面可见新增弹幕" />
 	<input type="button" onclick="oncommentpost()" value="提交弹幕">
 </form>
 <iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe><!--	http://www.jb51.net/web/138365.html	-->
@@ -44,6 +44,7 @@
 </td></tr></table>
 
 <script>
+	function cleartext(){document.getElementById("comment").value="";}
 	function oncommentpost(e){
         	document.getElementById("comment").value=JSON.stringify(
         		{
