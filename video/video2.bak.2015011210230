@@ -21,11 +21,6 @@
 
 <script>
 function onInputFileChange() {
-		var file = document.getElementById('file').files[0];
-		var url = URL.createObjectURL(file);
-		console.log(url);
-		document.getElementById("video_id").src = url;
-
 		var inst = ABP.create(document.getElementById("video"), {
 					"src":document.getElementById("video_id"),
 					"width":672,
