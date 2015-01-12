@@ -94,7 +94,7 @@
 					catch( e ) { alert("您的浏览器不支持AJAX！");return false;}
 				}
 			}
-			xmlHttp.onreadystatechange = function(){if( xmlHttp.readyState == 4  && xmlHttp.status == 200 ) alert(JSON.parse(xmlHttp.responseText));};
+			xmlHttp.onreadystatechange = function(){if( xmlHttp.readyState == 4  && xmlHttp.status == 200 ) alert(xmlHttp.responseText);};
 			xmlHttp.open( "GET", url, true );
 			xmlHttp.send( null );
 		}
