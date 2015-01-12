@@ -1,53 +1,117 @@
-<html>
+﻿<html>
 <head>
+	<link rel="stylesheet" href="base.css?1" />
 	<link rel="stylesheet" href="style.css" />
+	<style>body{background-color:#000;overflow:hidden;}</style>
 	<script src="CommentCoreLibrary.js"></script>
+	<script src="ABPlayer.js"></script>
+	<script src="ABPLibxml.js"></script>
+	<!--		-->
 </head>
-<body>
-<!--http://blog.csdn.net/yl02520/article/details/15029593-->
-<!--var file=document.getElementById('file').files[0];var reader = new FileReader();reader.onload = (function(file){return function(e){$("video_id").attr('src',e.target.result);$("source").attr('src',e.target.result);}})(file);reader.readAsDataURL(file);-->
+<body><!--http://blog.csdn.net/yl02520/article/details/15029593-->
+	<table><tr><td>
+		<video id="video_id" height="450" width="800" controls="controls" preload="auto">Your browser can't support HTML5 Video</video>
+		<div id="load-player"></div>
+	<hr />
+		<input type="text" id="danmaku" size="60" value="请输入弹幕,点击按钮提交,刷新页面可见新增弹幕">
+		<button type="button" onclick="ondanmakupost()">提交弹幕</button>
+	</td><td>
+		<button type="button" onclick="onbtnclick()">点击播放默认测试视频</button>
+		<a style="color:#ff0000">或者在下方点击并选择视频</a><br />
+		
+		<input type="file" id="file" onchange="onInputFileChange()" style="visibility:visible">
+		<a href="http://static.cdn.moe/ccltestingvideos/otsukimi_recital.mp4">下载默认测试视频到本地</><br /> 
+	
+		<input type="text" id="link" size="60" onblur=  "onInputMagnetBlur()" value="magnet:?xt=urn:btih:d71730bb7f7d1506abd1c917ef13c47794580b87"><br />
+		<a style="color:#ff0000">修改磁力链接,改换弹幕池,获取饼干和弹幕池相关设置在</a><a href="http://idanmu.tk/index.html">网站主页(接口测试)</a><br />
+		
+		<form action="http://bt.ktxp.com/search.php">
+		<input type="text" id="keyword" size="60" maxlength="40" name="keyword" value="搜索视频信息,请只保留40位16进制数">
+		<input type="submit" value="搜索" />
+		</form><hr />
 
-<div id='my-player' class='abp'>
-	<video id="video_id" height="480" controls="controls" autoplay loop>Your browser can't support HTML5 Video</video>  
-	<div id='my-comment-stage' class='container'></div>
-</div><br />
 
-<input type="text" id="link" value="1111111111111111111111111111111111111111">
-<input type="file" id="file" onchange="onInputFileChange()" value="�ٴ���Ƶ�ļ�">  
+		<form action="http://idanmu.tk/report.php">
+		<textarea rows="10" cols="60" name="info">请提交反馈信息</textarea><br />
+		<input type="submit" value="报告" />
+		</form>
 
-<script>
-function onInputFileChange() {
-	try{
-		var file = document.getElementById('file').files[0];
-		var url = URL.createObjectURL(file);
-		console.log(url);
-		document.getElementById("video_id").src = url;
-
-		if (window.XMLHttpRequest) xmlhttp=new XMLHttpRequest();
-		else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		xmlhttp.open("GET","http://idanmu.tk/getComment.php?btih="+document.getElementById('link').value, true);
-		xmlhttp.send();
-		xmlhttp.onreadystatechange = state_Change;
-	}catch(e){
-		alert("Non HTML5");
-	}
-}
-function state_Change(){
-	if (xmlhttp.readyState==4){// 4 = "loaded"
-		if (xmlhttp.status==200){// 200 = OK
-			var cm = new CommentManager(document.getElementById('my-comment-stage'));
-			cm.init();
-			var textstring=xmlhttp.responseText.split("<!--Don't")[0];
-			cm.load(AcfunParser(textstring));
-			cm.start();
-			cm.time();
-			cm.display=true;
-			document.getElementById("video_id").currentTime=0;
-		} else {
-			alert("Problem retrieving XML data");
+	</td></tr></table>
+	<script>
+		function ondanmakupost(e){
+	        	var json_str=JSON.stringify({"c":document.getElementById("video_id").currentTime.toString()+",16777215,1,25,0,0","m":document.getElementById("danmaku").value});
+			ajaxFunction("http://idanmu.tk/newComment.php?btih="+document.getElementById('link').value+"&comment="+encodeURI(json_str));
 		}
-	}
-}
-</script>
+		
+		function onInputMagnetBlur() {
+			document.getElementById('file').style.visibility="visible";
+		}
+		function onbtnclick(){
+			onInputFileChange();
+			document.getElementById("video_id").src ="http://static.cdn.moe/ccltestingvideos/otsukimi_recital.mp4";
+			alert(document.getElementById("video_id").src);
+		}
+		function onInputFileChange() {
+			try{
+				if(-1!= document.getElementById("video_id").src.indexOf("http")){
+					alert("播放默认视频");
+				}else{
+					var file =document.getElementById('file').files[0];
+					var url = URL.createObjectURL(file);
+					console.log(url);
+					document.getElementById("video_id").src = url;
+				}
+				document.getElementById("video_id").pause();
+				//ABP
+				var inst = ABP.create( document.getElementById('load-player'), {
+					"src":{
+						"playlist":[
+							{
+								"video":document.getElementById("video_id"),
+								"comments":"http://idanmu.tk/getComment.php?btih="+document.getElementById('link').value,
+							}
+						]
+					},
+					"width":800,
+					"height":450
+				});
+
+				window.inst = inst;
+
+			} catch( e ) {
+				alert("不支持HTML5");
+			}
+		}
+
+		 function ajaxFunction( url ){
+			var xmlHttp;
+			// 实例化对象
+			try {xmlHttp = new XMLHttpRequest();}    // Firefox, Opera 8.0+, Safari
+			catch( e ) {
+				try {xmlHttp = new ActiveXObject( "Msxml2.XMLHTTP" );}// Internet Explorer
+				catch( e ) {
+					try {xmlHttp = new ActiveXObject( "Microsoft.XMLHTTP" );}
+					catch( e ) { alert("您的浏览器不支持AJAX！");return false;}
+				}
+			}
+			xmlHttp.onreadystatechange = function(){if( xmlHttp.readyState == 4  && xmlHttp.status == 200 ) alert(JSON.parse(xmlHttp.responseText));};
+			xmlHttp.open( "GET", url, true );
+			xmlHttp.send( null );
+		}
+		
+		function state_Change(){
+			if (xmlhttp.readyState==4){// 4 = "loaded"
+				if (xmlhttp.status==200){// 200 = OK
+					document.getElementById("video_id").currentTime=0;
+					inst.load(xmlhttp.responseText.split("<!--Don't")[0]);
+					inst.start();
+					inst.time();
+					inst.display=true;
+				} else {
+					alert("Problem retrieving XML data");
+				}
+			}
+		}
+	</script>
 </body>
 </html>

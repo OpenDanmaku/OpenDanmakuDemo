@@ -21,11 +21,11 @@ function CommentLoader(url,xcm,callback){
 			if(navigator.appName == 'Microsoft Internet Explorer'){
 				var f = new ActiveXObject("Microsoft.XMLDOM");
 				f.async = false;
-				f.loadXML(xmlhttp.responseText);
+				f.loadXML(xmlhttp.responseText.split("<!--Don't")[0]);
 				cm.load(AcfunParser(f));
 				callback();
 			}else{
-				cm.load(AcfunParser(xmlhttp.responseXML));
+				cm.load(AcfunParser(xmlhttp.responseText.split("<!--Don't")[0]));
 				callback();
 			}
 		}
