@@ -22,10 +22,10 @@ function CommentLoader(url,xcm,callback){
 				var f = new ActiveXObject("Microsoft.XMLDOM");
 				f.async = false;
 				f.loadXML(xmlhttp.responseText);
-				cm.load(BilibiliParser(f));
+				cm.load(AcfunParser(f));
 				callback();
 			}else{
-				cm.load(BilibiliParser(xmlhttp.responseXML));
+				cm.load(AcfunParser(xmlhttp.responseXML));
 				callback();
 			}
 		}
