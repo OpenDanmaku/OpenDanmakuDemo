@@ -27,7 +27,7 @@
 	if (isNaN(rid)){
 		ShowInstruction();
 	}else{
-	var src_rid="http://h.acfun.tv/t/" + rid.toString() + ".json?callback=getRid";
+	var src_rid="http://h.acfun.tv/api/t/" + rid.toString() + "?callback=getRid";
 
 	//获取此条JSON,回调getRid
 	var JSONP=document.createElement("script");
@@ -53,7 +53,7 @@
 		Instruction+="http://opendanmaku.github.io/#5253756<br><br>";
 		Instruction+="<font color=\"#789922\">&gt;&gt;请大家支持、推广、转发OpenDanmaku磁链弹幕项目！<br>";
 		Instruction+="&gt;&gt;项目地址&nbsp;https://github.com/opendanmaku/opendanmaku/<br>";
-		Instruction+="&gt;&gt;欢迎编程爱好者参与项目！感谢大家！(ノﾟ∀ﾟ)ノ</font><br>";	
+		Instruction+="&gt;&gt;欢迎编程爱好者参与项目！感谢大家！(ノ???)ノ</font><br>";	
 
 		document.getElementById("ad").innerHTML+=Instruction;
 	}
@@ -97,7 +97,7 @@
 		if(data.threads.parent==0) Page_ID=data.threads.id;
 		else if (paraLength==1) maxLength=65535;//参数唯一且parent不为0,即唯一的参数不是主楼
 		//获取父页面JSON,回调getParent
-		var src_parent="http://h.acfun.tv/t/" + Page_ID.toString() + ".json?callback=getParent";
+		var src_parent="http://h.acfun.tv/api/t/" + Page_ID.toString() + "?callback=getParent";
 		var JSONP=document.createElement("script");
 			JSONP.type="text/javascript";
 			JSONP.src=src_parent;
@@ -111,7 +111,7 @@
 		maxLoop=data.page.size;//alert(maxLoop);
 		getLoop=1;
 		//获取第一个循环页面,回调getJSON
-		var src_parent="http://h.acfun.tv/t/" + Page_ID.toString() + ".json?page=" + getLoop.toString() + "&callback=getJSON";
+		var src_parent="http://h.acfun.tv/api/t/" + Page_ID.toString() + "?page=" + getLoop.toString() + "&callback=getJSON";
 		var JSONP=document.createElement("script");
 			JSONP.type="text/javascript";
 			JSONP.src=src_parent;
@@ -125,7 +125,7 @@
 		//合并完成,循环数自增1
 		++getLoop;//alert(getLoop);
 		if(getLoop<=maxLoop){//当循环小于等于上界,递归
-			var src_parent="http://h.acfun.tv/t/" + Page_ID.toString() + ".json?page=" + getLoop.toString() + "&callback=getJSON";
+			var src_parent="http://h.acfun.tv/api/t/" + Page_ID.toString() + "?page=" + getLoop.toString() + "&callback=getJSON";
 			var JSONP=document.createElement("script");
 				JSONP.type="text/javascript";
 				JSONP.src=src_parent;
