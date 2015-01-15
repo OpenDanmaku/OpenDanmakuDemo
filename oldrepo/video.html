@@ -1,0 +1,51 @@
+<html>
+<head>
+	<link rel="stylesheet" href="style.css" />
+	<script src="CommentCoreLibrary.js"></script>
+</head>
+<body>
+<!--http://blog.csdn.net/yl02520/article/details/15029593-->
+<!--var file=document.getElementById('file').files[0];var reader = new FileReader();reader.onload = (function(file){return function(e){$("video_id").attr('src',e.target.result);$("source").attr('src',e.target.result);}})(file);reader.readAsDataURL(file);-->
+
+<div id='my-player' class='abp'>
+	<video id="video_id" height="480" controls="controls" autoplay loop>Your browser can't support HTML5 Video</video>  
+	<div id='my-comment-stage' class='container'></div>
+</div><br />
+
+<input type="text" id="link" value="1111111111111111111111111111111111111111">
+<input type="file" id="file" onchange="onInputFileChange()" value="再打开视频文件">  
+
+<script>
+function onInputFileChange() {
+	try{
+		var file = document.getElementById('file').files[0];
+		var url = URL.createObjectURL(file);
+		console.log(url);
+		document.getElementById("video_id").src = url;
+
+		if (window.XMLHttpRequest) xmlhttp=new XMLHttpRequest();
+		else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		xmlhttp.open("GET","https://opendanmaku.github.io/test.json", true);
+		xmlhttp.send();
+		xmlhttp.onreadystatechange = state_Change;
+	}catch(e){
+		alert("Non HTML5");
+	}
+}
+function state_Change(){
+	if (xmlhttp.readyState==4){// 4 = "loaded"
+		if (xmlhttp.status==200){// 200 = OK
+			var cm = new CommentManager(document.getElementById('my-comment-stage'));
+			cm.init();
+			var textstring=xmlhttp.responseText.split("<!--Don't")[0];
+			cm.load(AcfunParser(textstring));
+			cm.start();
+			document.getElementById("video_id").currentTime=0;
+		} else {
+			alert("Problem retrieving XML data");
+		}
+	}
+}
+</script>
+</body>
+</html>
