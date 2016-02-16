@@ -1,0 +1,139 @@
+﻿<html>
+<head>
+	<link rel="stylesheet" href="base.css?1" />
+	<link rel="stylesheet" href="style.css" />
+	<style>body{background-color:#000;overflow:hidden;}</style>
+	<script src="CommentCoreLibrary.js"></script>
+	<script src="ABPlayer.js"></script>
+	<script src="ABPLibxml.js"></script>
+	<!--		-->
+</head>
+<body><table><tr><td><!--http://blog.csdn.net/yl02520/article/details/15029593-->
+
+	<video id="video_id" height="450" width="800" controls="controls" preload="auto">Your browser can't support HTML5 Video</video>
+	<div id="load-player"></div>
+<hr />
+
+<form id="myform" action="http://idanmu.tk/newComment.php" target="id_iframe">
+	<input type="hidden" id="btih" name="btih" />
+	<input type="text" onfocus="cleartext()" id="comment" name="comment" size="60" value="请输入弹幕,点击按钮提交,刷新页面可见新增弹幕" />
+	<input type="button" onclick="oncommentpost()" value="提交弹幕">
+</form>
+<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe><!--	http://www.jb51.net/web/138365.html	-->
+</td><td>
+
+	<button type="button" onclick="onbtnclick()">点击播放默认测试视频</button>
+	<a style="color:#ff0000">或者在下方点击并选择视频</a><br />
+		
+	<input type="file" id="file" onchange="onInputFileChange()" style="visibility:visible" />
+	<a href="http://static.cdn.moe/ccltestingvideos/otsukimi_recital.mp4">下载默认测试视频到本地</><br /> 
+	
+	<input type="text" id="link" size="60" onblur= "onInputMagnetBlur()" value="magnet:?xt=urn:btih:d71730bb7f7d1506abd1c917ef13c47794580b87" /><br />
+	<b><a style="color:#ff0000">修改磁力链接,改换弹幕池,获取饼干和弹幕池相关设置在</a>
+	<a href="../test.html" style="color:#ffff00">网站主页(接口测试)</a><br /></b>
+		
+<form action="http://bt.ktxp.com/search.php">
+	<input type="text" id="keyword" size="60" maxlength="40" name="keyword" value="搜索视频信息,请只保留40位16进制数" />
+	<input type="submit" value="搜索" />
+</form><hr />
+
+<form action="http://idanmu.tk/report.php">
+	<textarea rows="10" cols="60" name="info">请提交反馈信息</textarea><br />
+	<input type="submit" value="报告" />
+</form>
+<a href="mailto:schezuk@163.com" style="color:#ffff00"><b>联系我! mailto:schezuk@163.com</b></a>
+</td></tr></table>
+
+<script>
+	function cleartext(){document.getElementById("comment").value="";}
+	function oncommentpost(e){
+        	document.getElementById("comment").value=JSON.stringify(
+        		{
+        			"c":document.getElementById("video_id").currentTime.toString()+",16777215,1,25,0,0",
+        			"m":document.getElementById("comment").value
+        		}
+        	);
+		document.getElementById("btih").value=document.getElementById("link").value;
+		document.getElementById("myform").submit();
+	}
+		
+	function onInputMagnetBlur() {
+		document.getElementById('file').style.visibility="visible";
+	}
+	
+	function onbtnclick(){
+		onInputFileChange();
+		document.getElementById("video_id").src ="http://static.cdn.moe/ccltestingvideos/otsukimi_recital.mp4";
+		alert(document.getElementById("video_id").src);
+	}
+
+	function onInputFileChange() {
+		try{
+			if(-1!= document.getElementById("video_id").src.indexOf("http")){
+				alert("播放默认视频");
+			}else{
+				var file =document.getElementById('file').files[0];
+				var url = URL.createObjectURL(file);
+				console.log(url);
+				document.getElementById("video_id").src = url;
+			}
+			document.getElementById("video_id").pause();
+			//ABP
+			var inst = ABP.create( document.getElementById('load-player'), {
+				"src":{
+					"playlist":[
+						{
+							"video":document.getElementById("video_id"),
+							"comments":"http://idanmu.tk/getComment.php?btih="+document.getElementById('link').value,
+						}
+					]
+				},
+				"width":800,
+				"height":450
+			});
+
+			window.inst = inst;
+
+		} catch( e ) {
+			alert("不支持HTML5");
+		}
+	}
+
+	function ajaxFunction( url ){
+		var xmlHttp;
+		// 实例化对象
+		try {xmlHttp = new XMLHttpRequest();}    // Firefox, Opera 8.0+, Safari
+		catch( e ) {
+			try {xmlHttp = new ActiveXObject( "Msxml2.XMLHTTP" );}// Internet Explorer
+			catch( e ) {
+				try {xmlHttp = new ActiveXObject( "Microsoft.XMLHTTP" );}
+				catch( e ) { alert("您的浏览器不支持AJAX！");return false;}
+			}
+		}
+		xmlHttp.onreadystatechange = function(){if( xmlHttp.readyState == 4  && xmlHttp.status == 200 ) alert(xmlHttp.responseText);};
+		xmlHttp.open( "GET", url, true );
+		xmlHttp.send( null );
+	}
+		
+	function state_Change(){
+		if (xmlhttp.readyState==4){// 4 = "loaded"
+			if (xmlhttp.status==200){// 200 = OK
+				document.getElementById("video_id").currentTime=0;
+				inst.load(xmlhttp.responseText.split("<!--Don't")[0]);
+				inst.start();
+				inst.time();
+				inst.display=true;
+			} else {
+				alert("Problem retrieving XML data");
+			}
+		}
+	}
+</script>
+
+<script type="text/javascript" id="tc_3c6b1ff9a8">
+var _tcq = _tcq || []; _tcq.push(['flag', '3c6b1ff9a8', '000000', 'ffffff', 'ffffff', '1', '1', '0']); 
+(function() { var e = document.createElement('script'); e.type = 'text/javascript'; e.async = true; e.src = '//s.tcimg.com/w/v2/flag.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(e, s); })();
+</script>
+<img src="http://idanmu.tk/getVcode.php" style="visibility:hidden" />
+</body>
+</html>
